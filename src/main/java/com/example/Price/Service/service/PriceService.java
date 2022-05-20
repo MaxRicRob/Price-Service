@@ -9,6 +9,7 @@ public class PriceService {
     public PriceRequest sumComponentPrices(PriceRequest priceRequest) {
 
          return priceRequest.setTotalPrice(priceRequest
+                 .getProduct()
                  .getComponents()
                  .stream()
                  .map(ProductComponent::getPrice)
