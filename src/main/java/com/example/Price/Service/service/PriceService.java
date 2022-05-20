@@ -8,12 +8,11 @@ public class PriceService {
 
     public PriceRequest sumComponentPrices(PriceRequest priceRequest) {
 
-         return priceRequest.setTotalPrice(
-                 priceRequest
-                .getComponents()
-                .stream()
-                .map(ProductComponent::getPrice)
-                .reduce(0L, Long::sum)
+         return priceRequest.setTotalPrice(priceRequest
+                 .getComponents()
+                 .stream()
+                 .map(ProductComponent::getPrice)
+                 .reduce(0L, Long::sum)
          );
     }
 }

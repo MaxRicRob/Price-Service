@@ -1,6 +1,5 @@
 package com.example.Price.Service.dto;
 
-import com.example.Price.Service.entity.Product;
 import com.example.Price.Service.entity.ProductComponent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +20,4 @@ public class PriceRequest {
     private String name;
     private List<ProductComponent> components;
     private long totalPrice;
-
-
 }
