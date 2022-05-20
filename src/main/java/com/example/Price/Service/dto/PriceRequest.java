@@ -19,7 +19,6 @@ public class PriceRequest {
 
     private long id;
     private String name;
-    private Product product;
     private List<ProductComponent> components;
     private long totalPrice;
 
