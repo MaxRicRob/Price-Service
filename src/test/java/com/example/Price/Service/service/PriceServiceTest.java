@@ -1,6 +1,7 @@
 package com.example.Price.Service.service;
 
 import com.example.Price.Service.dto.PriceRequest;
+import com.example.Price.Service.entity.Product;
 import com.example.Price.Service.entity.ProductComponent;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,11 @@ class PriceServiceTest {
         return new PriceRequest()
                 .setId(0L)
                 .setName("test")
-                .setComponents(getListOfTestComponents());
+                .setProduct(
+                        new Product()
+                                .setName("test")
+                                .setComponents(getListOfTestComponents())
+                );
 
     }
 
