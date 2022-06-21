@@ -1,9 +1,9 @@
-package com.example.Price.Service.service;
+package com.example.PriceService.service;
 
-import com.example.Price.Service.dto.PriceRequest;
-import com.example.Price.Service.dto.PriceResponse;
-import com.example.Price.Service.entity.Product;
-import com.example.Price.Service.entity.ProductComponent;
+import com.example.PriceService.dto.PriceRequest;
+import com.example.PriceService.dto.PriceResponse;
+import com.example.PriceService.entity.Product;
+import com.example.PriceService.entity.ProductComponent;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -74,7 +74,4 @@ class PriceServiceTest {
                         .setCalories(52)
         );
     }
-
-
-
 }

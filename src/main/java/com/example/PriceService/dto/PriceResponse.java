@@ -1,4 +1,4 @@
-package com.example.Price.Service.dto;
+package com.example.PriceService.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
