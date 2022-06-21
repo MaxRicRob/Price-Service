@@ -1,22 +1,21 @@
-package com.example.Price.Service.entity;
+package com.example.PriceService.dto;
 
+import com.example.PriceService.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class Product {
+public class PriceRequest {
 
-    private UUID id;
-    private String name;
-    private List<ProductComponent> components;
+    private long id;
+    private Product product;
+
 }
