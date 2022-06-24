@@ -11,5 +11,5 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 FROM openjdk:11
 COPY --from=build /home/app/target/PriceServiceApplication-0.0.1-SNAPSHOT.jar /usr/local/lib/target/PriceServiceApplication.jar
-EXPOSE 8081
+EXPOSE 8083
 ENTRYPOINT ["java","-jar","/usr/local/lib/target/PriceServiceApplication.jar"]
