@@ -1,6 +1,5 @@
-package com.example.PriceService.dto;
+package com.example.PriceService.entity;
 
-import com.example.PriceService.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

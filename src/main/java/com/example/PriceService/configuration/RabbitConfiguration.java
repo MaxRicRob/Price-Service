@@ -1,7 +1,5 @@
 package com.example.PriceService.configuration;
 
-
-
 import com.example.PriceService.api.RabbitController;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -29,6 +27,7 @@ public class RabbitConfiguration {
     public RabbitController rabbitController() {
         return new RabbitController();
     }
+
     @Bean
     public DirectExchange directExchange() {
         return new DirectExchange(directXchangeName);
@@ -43,7 +42,6 @@ public class RabbitConfiguration {
     public Binding priceServiceBinding(DirectExchange directExchange, Queue priceServiceQueue) {
         return BindingBuilder.bind(priceServiceQueue).to(directExchange).with(priceServiceRoutingKey);
     }
-
 
 
 }
