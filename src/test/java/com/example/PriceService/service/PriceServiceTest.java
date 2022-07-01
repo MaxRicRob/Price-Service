@@ -4,6 +4,7 @@ import com.example.PriceService.dto.PriceRequest;
 import com.example.PriceService.dto.PriceResponse;
 import com.example.PriceService.entity.Product;
 import com.example.PriceService.entity.ProductComponent;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

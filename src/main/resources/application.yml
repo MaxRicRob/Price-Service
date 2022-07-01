@@ -1,2 +1,12 @@
 server:
   port: 8083
+
+#rabbitMQ
+queue-names:
+  price-service: price-service.rpc.queue
+
+routing-keys:
+  price-service: price-service.rpc.key
+
+xchange:
+  name: exchange.rpc
