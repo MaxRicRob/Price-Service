@@ -3,7 +3,9 @@ package com.example.PriceService.service;
 import com.example.PriceService.dto.PriceRequest;
 import com.example.PriceService.dto.PriceResponse;
 import com.example.PriceService.entity.ProductComponent;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PriceService {
 
 
