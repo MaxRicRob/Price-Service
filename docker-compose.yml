@@ -12,6 +12,12 @@ services:
       - 8083
     volumes:
       - ./:/app/app
+    networks:
+      - backend
 
+networks:
+  backend:
+    name: KBE
+    external: true
 
 

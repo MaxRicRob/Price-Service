@@ -1,6 +1,11 @@
 server:
   port: 8083
 
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+
 #rabbitMQ
 queue-names:
   price-service: price-service.rpc.queue
