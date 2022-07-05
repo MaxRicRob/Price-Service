@@ -47,7 +47,7 @@ class RabbitControllerTest {
     @Test
     void handleRequestWithIncorrectMessageKey() {
         var priceRequest = getPriceRequest();
-        var message = new Message(("test" + new Gson().toJson(priceRequest)).getBytes());
+        var message = new Message(("IncorrectMessageKey" + new Gson().toJson(priceRequest)).getBytes());
 
         rabbitController.handleRequest(message);
 
