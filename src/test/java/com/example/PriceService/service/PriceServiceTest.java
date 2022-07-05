@@ -19,7 +19,7 @@ class PriceServiceTest {
 
         var priceResponse = priceService.sumComponentPrices(getPriceRequest());
 
-        assertThat(priceResponse.getTotalPrice()).isEqualTo(55);
+        assertThat(priceResponse.getTotalPrice()).isEqualTo(5500);
     }
 
 
@@ -42,7 +42,7 @@ class PriceServiceTest {
                 new ProductComponent()
                         .setId(0L)
                         .setName("Pineapple")
-                        .setPrice(17)
+                        .setPrice(1700)
                         .setWeight(0)
                         .setColor("Yellow")
                         .setOrigin("Mexico")
@@ -53,7 +53,7 @@ class PriceServiceTest {
                 new ProductComponent()
                         .setId(1L)
                         .setName("Banana")
-                        .setPrice(23)
+                        .setPrice(2300)
                         .setWeight(9)
                         .setColor("Yellow")
                         .setOrigin("Brazil")
@@ -64,7 +64,7 @@ class PriceServiceTest {
                 new ProductComponent()
                         .setId(2L)
                         .setName("Apple")
-                        .setPrice(15)
+                        .setPrice(1500)
                         .setWeight(8)
                         .setColor("Red")
                         .setOrigin("France")
