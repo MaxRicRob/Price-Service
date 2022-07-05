@@ -2,7 +2,6 @@ package com.example.PriceService.service;
 
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.entity.PriceRequest;
-import com.example.PriceService.entity.PriceResponse;
 import com.example.PriceService.entity.Product;
 import com.example.PriceService.entity.ProductComponent;
 import org.junit.jupiter.api.Test;
@@ -16,9 +15,9 @@ class PriceServiceTest {
     @Test
     void sumTotalPriceOfPriceRequest() {
 
-        final PriceService priceService = new PriceService();
+        var priceService = new PriceService();
 
-        final PriceResponse priceResponse = priceService.sumComponentPrices(getPriceRequest());
+        var priceResponse = priceService.sumComponentPrices(getPriceRequest());
 
         assertThat(priceResponse.getTotalPrice()).isEqualTo(55);
     }
