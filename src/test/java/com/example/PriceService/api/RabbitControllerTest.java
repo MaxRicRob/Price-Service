@@ -31,12 +31,12 @@ class RabbitControllerTest {
     PriceService priceService;
 
     @Test
-    void handleRequestWithCorrectMessageKey() {
+    void handleRequestWithCorrectMessageType() {
         var priceRequest = getPriceRequest();
         var priceResponse = getPriceResponse();
         var message = new Message((new Gson().toJson(priceRequest)).getBytes());
         message.getMessageProperties()
-                .setHeader("key", "priceRequest");
+                .setType("priceRequest");
         when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
 
         rabbitController.handleRequest(message);
@@ -45,11 +45,11 @@ class RabbitControllerTest {
     }
 
     @Test
-    void handleRequestWithIncorrectMessageKey() {
+    void handleRequestWithIncorrectMessageType() {
         var priceRequest = getPriceRequest();
         var message = new Message((new Gson().toJson(priceRequest)).getBytes());
         message.getMessageProperties()
-                .setHeader("key", "IncorrectMessageKey");
+                .setType("IncorrectMessageType");
 
         rabbitController.handleRequest(message);
 
