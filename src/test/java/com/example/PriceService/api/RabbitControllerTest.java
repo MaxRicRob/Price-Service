@@ -42,21 +42,16 @@ class RabbitControllerTest {
         rabbitController.handleRequest(message);
 
         verify(priceService, times(1)).sumComponentPrices(any(PriceRequest.class));
-
     }
 
     @Test
     void handleRequestWithIncorrectMessageKey() {
         var priceRequest = getPriceRequest();
-        var priceResponse = new PriceResponse()
-                .setId(0L)
-                .setTotalPrice(55L);
         var message = new Message(("test" + new Gson().toJson(priceRequest)).getBytes());
 
         rabbitController.handleRequest(message);
 
         verifyNoInteractions(priceService);
-
     }
 
     private PriceRequest getPriceRequest() {
