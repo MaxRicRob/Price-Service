@@ -33,11 +33,11 @@ class RabbitControllerTest {
     @Test
     void handleRequestWithCorrectMessageKey() {
         var priceRequest = getPriceRequest();
-        var priceResponse = new PriceResponse()
-                .setId(0L)
-                .setTotalPrice(55L);
+        var priceResponse = getPriceResponse();
+        var message = new Message((new Gson().toJson(priceRequest)).getBytes());
+        message.getMessageProperties()
+                .setHeader("key", "priceRequest");
         when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
-        var message = new Message(("priceRequest_" + new Gson().toJson(priceRequest)).getBytes());
 
         rabbitController.handleRequest(message);
 
@@ -47,11 +47,19 @@ class RabbitControllerTest {
     @Test
     void handleRequestWithIncorrectMessageKey() {
         var priceRequest = getPriceRequest();
-        var message = new Message(("IncorrectMessageKey" + new Gson().toJson(priceRequest)).getBytes());
+        var message = new Message((new Gson().toJson(priceRequest)).getBytes());
+        message.getMessageProperties()
+                .setHeader("key", "IncorrectMessageKey");
 
         rabbitController.handleRequest(message);
 
         verifyNoInteractions(priceService);
+    }
+
+    private PriceResponse getPriceResponse() {
+        return new PriceResponse()
+                .setId(0L)
+                .setTotalPrice(55L);
     }
 
     private PriceRequest getPriceRequest() {
