@@ -31,7 +31,7 @@ class RabbitControllerTest {
     PriceService priceService;
 
     @Test
-    void handleRequestWithCorrectMessageType() {
+    void handle_request_with_correct_message_type() {
         var priceRequest = getPriceRequest();
         var priceResponse = getPriceResponse();
         var message = new Message((new Gson().toJson(priceRequest)).getBytes());
@@ -45,7 +45,7 @@ class RabbitControllerTest {
     }
 
     @Test
-    void handleRequestWithIncorrectMessageType() {
+    void handle_request_with_incorrect_message_type() {
         var priceRequest = getPriceRequest();
         var message = new Message((new Gson().toJson(priceRequest)).getBytes());
         message.getMessageProperties()

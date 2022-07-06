@@ -13,7 +13,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class PriceServiceTest {
 
     @Test
-    void sumTotalPriceOfPriceRequest() {
+    void sum_total_price_of_price_request() {
 
         var priceService = new PriceService();
 
