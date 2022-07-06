@@ -78,7 +78,7 @@ class RabbitControllerTest {
 
         return List.of(
                 new ProductComponent()
-                        .setId(0L)
+                        .setId(0)
                         .setName("Pineapple")
                         .setPrice(17)
                         .setWeight(0)
@@ -89,7 +89,7 @@ class RabbitControllerTest {
                         .setOrganic(true)
                         .setCalories(50),
                 new ProductComponent()
-                        .setId(1L)
+                        .setId(0)
                         .setName("Banana")
                         .setPrice(23)
                         .setWeight(9)
@@ -100,7 +100,7 @@ class RabbitControllerTest {
                         .setOrganic(false)
                         .setCalories(88),
                 new ProductComponent()
-                        .setId(2L)
+                        .setId(0)
                         .setName("Apple")
                         .setPrice(15)
                         .setWeight(8)

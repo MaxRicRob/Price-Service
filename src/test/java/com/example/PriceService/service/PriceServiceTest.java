@@ -40,7 +40,7 @@ class PriceServiceTest {
 
         return List.of(
                 new ProductComponent()
-                        .setId(0L)
+                        .setId(0)
                         .setName("Pineapple")
                         .setPrice(1700)
                         .setWeight(0)
@@ -51,7 +51,7 @@ class PriceServiceTest {
                         .setOrganic(true)
                         .setCalories(50),
                 new ProductComponent()
-                        .setId(1L)
+                        .setId(0)
                         .setName("Banana")
                         .setPrice(2300)
                         .setWeight(9)
@@ -62,7 +62,7 @@ class PriceServiceTest {
                         .setOrganic(false)
                         .setCalories(88),
                 new ProductComponent()
-                        .setId(2L)
+                        .setId(0)
                         .setName("Apple")
                         .setPrice(1500)
                         .setWeight(8)

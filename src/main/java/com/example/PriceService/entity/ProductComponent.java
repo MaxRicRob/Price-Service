@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class ProductComponent {
 
-    private long id;
+    private int id;
     private String name;
     private long price;
     private int weight;
