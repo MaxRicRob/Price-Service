@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
 
+import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
+
 public class RabbitController {
 
 
@@ -19,8 +21,8 @@ public class RabbitController {
     @RabbitListener(queues = "${queue-names.price-service}")
     public String handleRequest(Message message) {
 
-        var type = message.getMessageProperties().getType();
-        if (type.equals("priceRequest")) {
+        var type = MessageType.valueOf(message.getMessageProperties().getType());
+        if (type.equals(PRICE_REQUEST)) {
             var priceRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), PriceRequest.class
             );
