@@ -15,6 +15,7 @@ import org.springframework.amqp.core.Message;
 
 import java.util.List;
 
+import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -36,7 +37,7 @@ class RabbitControllerTest {
         var priceResponse = getPriceResponse();
         var message = new Message((new Gson().toJson(priceRequest)).getBytes());
         message.getMessageProperties()
-                .setType("priceRequest");
+                .setType(PRICE_REQUEST.name());
         when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
 
         rabbitController.handleRequest(message);

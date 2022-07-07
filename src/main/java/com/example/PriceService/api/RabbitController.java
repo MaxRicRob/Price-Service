@@ -21,8 +21,14 @@ public class RabbitController {
     @RabbitListener(queues = "${queue-names.price-service}")
     public String handleRequest(Message message) {
 
-        var type = MessageType.valueOf(message.getMessageProperties().getType());
-        if (type.equals(PRICE_REQUEST)) {
+        final MessageType messageType;
+        try {
+            messageType = MessageType.valueOf(message.getMessageProperties().getType());
+        } catch (IllegalArgumentException e) {
+            return new Gson().toJson(new PriceResponse());
+        }
+
+        if (messageType.equals(PRICE_REQUEST)) {
             var priceRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), PriceRequest.class
             );
