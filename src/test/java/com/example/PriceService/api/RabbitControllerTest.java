@@ -1,10 +1,8 @@
 package com.example.PriceService.api;
 
 import com.example.PriceService.domain.PriceService;
-import com.example.PriceService.entity.PriceRequest;
-import com.example.PriceService.entity.PriceResponse;
-import com.example.PriceService.entity.Product;
-import com.example.PriceService.entity.ProductComponent;
+import com.example.PriceService.domain.entity.PriceRequest;
+import com.example.PriceService.domain.entity.PriceResponse;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -60,59 +58,14 @@ class RabbitControllerTest {
     private PriceResponse getPriceResponse() {
         return new PriceResponse()
                 .setId(0L)
-                .setTotalPrice(55L);
+                .setTotalPrice(5000L);
     }
 
     private PriceRequest getPriceRequest() {
 
         return new PriceRequest()
                 .setId(0L)
-                .setProduct(
-                        new Product()
-                                .setName("test")
-                                .setComponents(getListOfTestComponents())
-                );
-
+                .setPrices(List.of(500L, 1500L , 3000L));
     }
-
-    private List<ProductComponent> getListOfTestComponents() {
-
-        return List.of(
-                new ProductComponent()
-                        .setId(0)
-                        .setName("Pineapple")
-                        .setPrice(1700)
-                        .setWeight(0)
-                        .setColor("Yellow")
-                        .setOrigin("Mexico")
-                        .setAwesomeness(9)
-                        .setFarmer("Alice")
-                        .setOrganic(true)
-                        .setCalories(50),
-                new ProductComponent()
-                        .setId(0)
-                        .setName("Banana")
-                        .setPrice(2300)
-                        .setWeight(9)
-                        .setColor("Yellow")
-                        .setOrigin("Brazil")
-                        .setAwesomeness(7)
-                        .setFarmer("Bob")
-                        .setOrganic(false)
-                        .setCalories(88),
-                new ProductComponent()
-                        .setId(0)
-                        .setName("Apple")
-                        .setPrice(1500)
-                        .setWeight(8)
-                        .setColor("Red")
-                        .setOrigin("France")
-                        .setAwesomeness(6)
-                        .setFarmer("Charlie")
-                        .setOrganic(true)
-                        .setCalories(52)
-        );
-    }
-
 
 }
