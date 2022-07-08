@@ -40,7 +40,7 @@ class RabbitControllerTest {
 
         rabbitController.handleRequest(message);
 
-        verify(priceService, times(1)).sumComponentPrices(any(PriceRequest.class));
+        verify(priceService).sumComponentPrices(any(PriceRequest.class));
     }
 
     @Test
