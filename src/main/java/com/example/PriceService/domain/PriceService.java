@@ -11,7 +11,6 @@ public class PriceService {
     public PriceResponse sumComponentPrices(PriceRequest priceRequest) {
 
         return new PriceResponse()
-                .setId(priceRequest.getId())
                 .setTotalPrice(
                         priceRequest
                                 .getPrices()

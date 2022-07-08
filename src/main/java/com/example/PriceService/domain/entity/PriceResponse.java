@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PriceResponse {
 
-    private long id;
     private long totalPrice;
 
 }

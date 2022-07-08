@@ -23,7 +23,6 @@ class PriceServiceTest {
     private PriceRequest getPriceRequest() {
 
         return new PriceRequest()
-                .setId(0L)
                 .setPrices(List.of(500L, 1500L , 3000L));
     }
 }

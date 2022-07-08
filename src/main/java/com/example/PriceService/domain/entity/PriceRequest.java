@@ -16,7 +16,6 @@ import java.util.List;
 @Accessors(chain = true)
 public class PriceRequest {
 
-    private long id;
     private List<Long> prices;
 
 }

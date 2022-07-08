@@ -57,14 +57,12 @@ class RabbitControllerTest {
 
     private PriceResponse getPriceResponse() {
         return new PriceResponse()
-                .setId(0L)
                 .setTotalPrice(5000L);
     }
 
     private PriceRequest getPriceRequest() {
 
         return new PriceRequest()
-                .setId(0L)
                 .setPrices(List.of(500L, 1500L , 3000L));
     }
 
