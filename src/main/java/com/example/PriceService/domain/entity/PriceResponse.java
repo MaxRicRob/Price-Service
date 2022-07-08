@@ -1,4 +1,4 @@
-package com.example.PriceService.entity;
+package com.example.PriceService.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class PriceResponse {
 
-    private long id;
     private long totalPrice;
 
 }
