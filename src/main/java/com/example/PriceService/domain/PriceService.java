@@ -1,5 +1,6 @@
 package com.example.PriceService.domain;
 
+import com.example.PriceService.api.error.ErrorResponseException;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
 import org.springframework.stereotype.Service;
@@ -8,8 +9,9 @@ import org.springframework.stereotype.Service;
 public class PriceService {
 
 
-    public PriceResponse sumComponentPrices(PriceRequest priceRequest) {
+    public PriceResponse sumComponentPrices(PriceRequest priceRequest) throws ErrorResponseException {
 
+        if (priceRequest == null) throw new ErrorResponseException();
         return new PriceResponse()
                 .setTotalPrice(
                         priceRequest

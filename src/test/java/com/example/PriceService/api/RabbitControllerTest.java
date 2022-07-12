@@ -1,5 +1,6 @@
 package com.example.PriceService.api;
 
+import com.example.PriceService.api.error.ErrorResponseException;
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
@@ -14,6 +15,7 @@ import org.springframework.amqp.core.Message;
 import java.util.List;
 
 import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -31,16 +33,21 @@ class RabbitControllerTest {
 
     @Test
     void handle_request_with_correct_message_type() {
-        var priceRequest = getPriceRequest();
-        var priceResponse = getPriceResponse();
-        var message = new Message((new Gson().toJson(priceRequest)).getBytes());
-        message.getMessageProperties()
-                .setType(PRICE_REQUEST.name());
-        when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
+        try {
+            var priceRequest = getPriceRequest();
+            var priceResponse = getPriceResponse();
+            var message = new Message((new Gson().toJson(priceRequest)).getBytes());
+            message.getMessageProperties()
+                    .setType(PRICE_REQUEST.name());
+            when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
 
-        rabbitController.handleRequest(message);
+            rabbitController.handleRequest(message);
 
-        verify(priceService).sumComponentPrices(any(PriceRequest.class));
+            verify(priceService).sumComponentPrices(any(PriceRequest.class));
+
+        } catch (ErrorResponseException e) {
+            fail();
+        }
     }
 
     @Test

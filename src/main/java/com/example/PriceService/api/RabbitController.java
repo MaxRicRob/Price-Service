@@ -1,5 +1,6 @@
 package com.example.PriceService.api;
 
+import com.example.PriceService.api.error.ErrorResponseException;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
 import com.example.PriceService.domain.PriceService;
@@ -32,9 +33,17 @@ public class RabbitController {
             var priceRequest = new Gson().fromJson(
                     new String(message.getBody(), StandardCharsets.UTF_8), PriceRequest.class
             );
-            return new Gson().toJson(priceService.sumComponentPrices(priceRequest));
+            try {
+                return new Gson().toJson(priceService.sumComponentPrices(priceRequest));
+            } catch (ErrorResponseException e) {
+                return errorResponse();
+            }
         }
-        return new Gson().toJson(new PriceResponse());
+        return errorResponse();
+    }
+
+    private String errorResponse() {
+        return "errorResponse";
     }
 
 }
