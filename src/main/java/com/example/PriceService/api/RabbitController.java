@@ -1,8 +1,7 @@
 package com.example.PriceService.api;
 
-import com.example.PriceService.api.error.ErrorResponseException;
+import com.example.PriceService.error.ErrorResponseException;
 import com.example.PriceService.domain.entity.PriceRequest;
-import com.example.PriceService.domain.entity.PriceResponse;
 import com.example.PriceService.domain.PriceService;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
@@ -26,7 +25,7 @@ public class RabbitController {
         try {
             messageType = MessageType.valueOf(message.getMessageProperties().getType());
         } catch (IllegalArgumentException e) {
-            return new Gson().toJson(new PriceResponse());
+            return errorResponse();
         }
 
         if (messageType.equals(PRICE_REQUEST)) {

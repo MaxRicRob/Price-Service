@@ -1,7 +1,7 @@
 package com.example.PriceService.configuration;
 
 import com.example.PriceService.api.RabbitController;
-import com.example.PriceService.api.error.ErrorResponseException;
+import com.example.PriceService.error.ErrorResponseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

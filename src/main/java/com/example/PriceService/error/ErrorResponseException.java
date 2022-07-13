@@ -1,4 +1,4 @@
-package com.example.PriceService.api.error;
+package com.example.PriceService.error;
 
 public class ErrorResponseException extends Exception{
 }

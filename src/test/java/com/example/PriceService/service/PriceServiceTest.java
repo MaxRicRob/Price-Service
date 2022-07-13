@@ -1,6 +1,6 @@
 package com.example.PriceService.service;
 
-import com.example.PriceService.api.error.ErrorResponseException;
+import com.example.PriceService.error.ErrorResponseException;
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
 import org.junit.jupiter.api.Test;

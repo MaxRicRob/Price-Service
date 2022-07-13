@@ -1,6 +1,6 @@
 package com.example.PriceService.api;
 
-import com.example.PriceService.api.error.ErrorResponseException;
+import com.example.PriceService.error.ErrorResponseException;
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
@@ -17,7 +17,6 @@ import java.util.List;
 import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
