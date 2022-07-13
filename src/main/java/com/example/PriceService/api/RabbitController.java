@@ -1,8 +1,8 @@
 package com.example.PriceService.api;
 
-import com.example.PriceService.error.ErrorResponseException;
-import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.PriceService;
+import com.example.PriceService.domain.entity.PriceRequest;
+import com.example.PriceService.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

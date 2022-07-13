@@ -1,9 +1,9 @@
 package com.example.PriceService.api;
 
-import com.example.PriceService.error.ErrorResponseException;
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
+import com.example.PriceService.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,10 +26,10 @@ import static org.mockito.Mockito.when;
 class RabbitControllerTest {
 
     @InjectMocks
-    RabbitController rabbitController;
+    private RabbitController rabbitController;
 
     @Mock
-    PriceService priceService;
+    private PriceService priceService;
 
     @Test
     void handle_request_with_correct_message_type() {
@@ -89,7 +89,7 @@ class RabbitControllerTest {
     private PriceRequest getPriceRequest() {
 
         return new PriceRequest()
-                .setPrices(List.of(500L, 1500L , 3000L));
+                .setPrices(List.of(500L, 1500L, 3000L));
     }
 
 }

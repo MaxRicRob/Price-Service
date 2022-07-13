@@ -1,8 +1,8 @@
 package com.example.PriceService.service;
 
-import com.example.PriceService.error.ErrorResponseException;
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
+import com.example.PriceService.error.ErrorResponseException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -29,6 +29,6 @@ class PriceServiceTest {
     private PriceRequest getPriceRequest() {
 
         return new PriceRequest()
-                .setPrices(List.of(500L, 1500L , 3000L));
+                .setPrices(List.of(500L, 1500L, 3000L));
     }
 }
