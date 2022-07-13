@@ -15,6 +15,7 @@ import org.springframework.amqp.core.Message;
 import java.util.List;
 
 import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -59,6 +60,25 @@ class RabbitControllerTest {
         rabbitController.handleRequest(message);
 
         verifyNoInteractions(priceService);
+    }
+
+    @Test
+    void handle_request_catch_exception() {
+        try {
+
+            var priceRequest = getPriceRequest();
+            var message = new Message((new Gson().toJson(priceRequest)).getBytes());
+            message.getMessageProperties()
+                    .setType(PRICE_REQUEST.name());
+            when(priceService.sumComponentPrices(any())).thenThrow(ErrorResponseException.class);
+
+            var response = rabbitController.handleRequest(message);
+
+            assertThat(response).isEqualTo("errorResponse");
+
+        } catch (ErrorResponseException e) {
+            fail();
+        }
     }
 
     private PriceResponse getPriceResponse() {
