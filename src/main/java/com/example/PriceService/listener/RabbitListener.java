@@ -1,24 +1,23 @@
-package com.example.PriceService.api;
+package com.example.PriceService.listener;
 
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
+import static com.example.PriceService.listener.MessageType.PRICE_REQUEST;
 
-public class RabbitController {
+public class RabbitListener {
 
 
     @Autowired
     private PriceService priceService;
 
-    @RabbitListener(queues = "${queue-names.price-service}")
+    @org.springframework.amqp.rabbit.annotation.RabbitListener(queues = "${queue-names.price-service}")
     public String handleRequest(Message message) {
 
         final MessageType messageType;

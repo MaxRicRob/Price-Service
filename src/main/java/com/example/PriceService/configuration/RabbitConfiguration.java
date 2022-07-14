@@ -1,6 +1,6 @@
 package com.example.PriceService.configuration;
 
-import com.example.PriceService.api.RabbitController;
+import com.example.PriceService.listener.RabbitListener;
 import com.example.PriceService.error.ErrorResponseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
@@ -32,8 +32,8 @@ public class RabbitConfiguration {
 
 
     @Bean
-    public RabbitController rabbitController() {
-        return new RabbitController();
+    public RabbitListener rabbitController() {
+        return new RabbitListener();
     }
 
     @Bean

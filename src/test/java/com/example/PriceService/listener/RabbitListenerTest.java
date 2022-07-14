@@ -1,4 +1,4 @@
-package com.example.PriceService.api;
+package com.example.PriceService.listener;
 
 import com.example.PriceService.domain.PriceService;
 import com.example.PriceService.domain.entity.PriceRequest;
@@ -14,7 +14,7 @@ import org.springframework.amqp.core.Message;
 
 import java.util.List;
 
-import static com.example.PriceService.api.MessageType.PRICE_REQUEST;
+import static com.example.PriceService.listener.MessageType.PRICE_REQUEST;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -23,10 +23,10 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RabbitControllerTest {
+class RabbitListenerTest {
 
     @InjectMocks
-    private RabbitController rabbitController;
+    private RabbitListener rabbitListener;
 
     @Mock
     private PriceService priceService;
@@ -41,7 +41,7 @@ class RabbitControllerTest {
                     .setType(PRICE_REQUEST.name());
             when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
 
-            rabbitController.handleRequest(message);
+            rabbitListener.handleRequest(message);
 
             verify(priceService).sumComponentPrices(any(PriceRequest.class));
 
@@ -57,7 +57,7 @@ class RabbitControllerTest {
         message.getMessageProperties()
                 .setType("IncorrectMessageType");
 
-        rabbitController.handleRequest(message);
+        rabbitListener.handleRequest(message);
 
         verifyNoInteractions(priceService);
     }
@@ -72,7 +72,7 @@ class RabbitControllerTest {
                     .setType(PRICE_REQUEST.name());
             when(priceService.sumComponentPrices(any())).thenThrow(ErrorResponseException.class);
 
-            var response = rabbitController.handleRequest(message);
+            var response = rabbitListener.handleRequest(message);
 
             assertThat(response).isEqualTo("errorResponse");
 

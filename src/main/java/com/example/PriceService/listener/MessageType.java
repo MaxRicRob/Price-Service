@@ -1,4 +1,4 @@
-package com.example.PriceService.api;
+package com.example.PriceService.listener;
 
 public enum MessageType {
 
