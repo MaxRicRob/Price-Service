@@ -23,10 +23,10 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RabbitListenerTest {
+class ListenerTest {
 
     @InjectMocks
-    private RabbitListener rabbitListener;
+    private Listener listener;
 
     @Mock
     private PriceService priceService;
@@ -41,7 +41,7 @@ class RabbitListenerTest {
                     .setType(PRICE_REQUEST.name());
             when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
 
-            rabbitListener.handleRequest(message);
+            listener.handleRequest(message);
 
             verify(priceService).sumComponentPrices(any(PriceRequest.class));
 
@@ -57,7 +57,7 @@ class RabbitListenerTest {
         message.getMessageProperties()
                 .setType("IncorrectMessageType");
 
-        rabbitListener.handleRequest(message);
+        listener.handleRequest(message);
 
         verifyNoInteractions(priceService);
     }
@@ -72,7 +72,7 @@ class RabbitListenerTest {
                     .setType(PRICE_REQUEST.name());
             when(priceService.sumComponentPrices(any())).thenThrow(ErrorResponseException.class);
 
-            var response = rabbitListener.handleRequest(message);
+            var response = listener.handleRequest(message);
 
             assertThat(response).isEqualTo("errorResponse");
 

@@ -5,19 +5,20 @@ import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
 
 import static com.example.PriceService.listener.MessageType.PRICE_REQUEST;
 
-public class RabbitListener {
+public class Listener {
 
 
     @Autowired
     private PriceService priceService;
 
-    @org.springframework.amqp.rabbit.annotation.RabbitListener(queues = "${queue-names.price-service}")
+    @RabbitListener(queues = "${queue-names.price-service}")
     public String handleRequest(Message message) {
 
         final MessageType messageType;
