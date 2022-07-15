@@ -1,7 +1,7 @@
 package com.example.PriceService.configuration;
 
-import com.example.PriceService.listener.Listener;
 import com.example.PriceService.error.ErrorResponseException;
+import com.example.PriceService.listener.Listener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
