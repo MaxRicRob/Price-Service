@@ -1,6 +1,6 @@
 package com.example.PriceService.listener;
 
-import com.example.PriceService.domain.PriceService;
+import com.example.PriceService.domain.impl.PriceServiceImpl;
 import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.entity.PriceResponse;
 import com.example.PriceService.error.ErrorResponseException;
@@ -29,7 +29,7 @@ class ListenerTest {
     private Listener listener;
 
     @Mock
-    private PriceService priceService;
+    private PriceServiceImpl priceServiceImpl;
 
     @Test
     void handle_request_with_correct_message_type() {
@@ -39,11 +39,11 @@ class ListenerTest {
             var message = new Message((new Gson().toJson(priceRequest)).getBytes());
             message.getMessageProperties()
                     .setType(PRICE_REQUEST.name());
-            when(priceService.sumComponentPrices(any())).thenReturn(priceResponse);
+            when(priceServiceImpl.sumComponentPrices(any())).thenReturn(priceResponse);
 
             listener.handleRequest(message);
 
-            verify(priceService).sumComponentPrices(any(PriceRequest.class));
+            verify(priceServiceImpl).sumComponentPrices(any(PriceRequest.class));
 
         } catch (ErrorResponseException e) {
             fail();
@@ -59,7 +59,7 @@ class ListenerTest {
 
         listener.handleRequest(message);
 
-        verifyNoInteractions(priceService);
+        verifyNoInteractions(priceServiceImpl);
     }
 
     @Test
@@ -70,7 +70,7 @@ class ListenerTest {
             var message = new Message((new Gson().toJson(priceRequest)).getBytes());
             message.getMessageProperties()
                     .setType(PRICE_REQUEST.name());
-            when(priceService.sumComponentPrices(any())).thenThrow(ErrorResponseException.class);
+            when(priceServiceImpl.sumComponentPrices(any())).thenThrow(ErrorResponseException.class);
 
             var response = listener.handleRequest(message);
 
