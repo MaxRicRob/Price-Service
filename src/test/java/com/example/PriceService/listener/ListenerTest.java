@@ -1,8 +1,8 @@
 package com.example.PriceService.listener;
 
 import com.example.PriceService.domain.PriceService;
-import com.example.PriceService.domain.entity.PriceRequest;
-import com.example.PriceService.domain.entity.PriceResponse;
+import com.example.PriceService.entity.PriceRequest;
+import com.example.PriceService.entity.PriceResponse;
 import com.example.PriceService.error.ErrorResponseException;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;

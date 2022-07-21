@@ -1,7 +1,7 @@
 package com.example.PriceService.service;
 
-import com.example.PriceService.domain.entity.PriceRequest;
 import com.example.PriceService.domain.impl.PriceServiceImpl;
+import com.example.PriceService.entity.PriceRequest;
 import com.example.PriceService.error.ErrorResponseException;
 import org.junit.jupiter.api.Test;
 

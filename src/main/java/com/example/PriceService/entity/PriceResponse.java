@@ -1,4 +1,4 @@
-package com.example.PriceService.domain.entity;
+package com.example.PriceService.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

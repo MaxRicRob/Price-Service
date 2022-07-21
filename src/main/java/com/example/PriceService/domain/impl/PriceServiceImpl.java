@@ -1,8 +1,8 @@
 package com.example.PriceService.domain.impl;
 
 import com.example.PriceService.domain.PriceService;
-import com.example.PriceService.domain.entity.PriceRequest;
-import com.example.PriceService.domain.entity.PriceResponse;
+import com.example.PriceService.entity.PriceRequest;
+import com.example.PriceService.entity.PriceResponse;
 import com.example.PriceService.error.ErrorResponseException;
 import org.springframework.stereotype.Service;
 

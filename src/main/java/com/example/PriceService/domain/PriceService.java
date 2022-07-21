@@ -1,7 +1,7 @@
 package com.example.PriceService.domain;
 
-import com.example.PriceService.domain.entity.PriceRequest;
-import com.example.PriceService.domain.entity.PriceResponse;
+import com.example.PriceService.entity.PriceRequest;
+import com.example.PriceService.entity.PriceResponse;
 import com.example.PriceService.error.ErrorResponseException;
 
 public interface PriceService {
